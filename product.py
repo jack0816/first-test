@@ -6,9 +6,9 @@ while True:
        break
     #建立二維度清單
     price = input('請輸入價格:')
-    p = []
-    p.append(name)
-    p.append(price)
-    products.append(p)
+    p = [name,price] #p是小清單
+    products.append(p) #把小清單裝到大清單裡面
 print(products)
+
+
 # %%
