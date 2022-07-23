@@ -32,3 +32,21 @@ elif bmi >= 35 and bmi < 40:
     print('你的bmi值為', bmi ,'重度肥胖')
 
 # %%
+driving =input('你有沒有開過車')
+age = input('年齡')
+age = int(age)
+if driving == '有':
+    if age >= 18:
+        print('恭喜妳通過測驗')
+    else:
+        print('你為什麼開過車')
+elif driving == '沒有':
+    if age >= 18:
+        print('你可以去考駕照了')
+    else:
+        print('加油再等幾年')
+     #   raise SystemExit #讓程式在這邊中止
+else:
+    print('錯誤')
+    
+# %%
