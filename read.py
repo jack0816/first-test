@@ -46,4 +46,18 @@ for r in data:
         new.append(r)
 print('一共有',len(new),'筆資料長度小於100')
 print(new[0])
+# %% #篩選資料裡面有出現good的資料
+data = []
+with open('reviews.txt','r') as f:
+     for line in f:
+         data.append(line)
+good = []
+for r in data:
+    if 'good' in r:
+        good.append(r)
+# good = [r for r in data if 'good' in d] #後面兩句話等於上面兩個篩選的條件，最前面的r是如果有符合篩選的條件就把那個東西加到清單內
+print('一共有',len(good),'筆資料出現good')
+print(good[0])
+
+
 # %%
