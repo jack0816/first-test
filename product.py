@@ -1,14 +1,27 @@
 #%% #建立清單
+import os  #operating system
 
-#讀取檔案
+
 products = []
-with open('product.csv','r',encoding= 'UTF-8') as f:
-    for line in f:
-        if '商品,價格' in line:
-            continue  #繼續，跳到下一次
-        name , price = line.strip().split(',')  #先用split把多餘的空格去掉，再用split切割(因為切割完變成兩塊，所以用兩個變數去存)
-        products.append([name,price])
-print(products)
+
+if os.path.isfile('product.csv'):  #確認檔案是否存在電腦裡
+    print('Yah,找到檔案了')
+
+    #讀取檔案
+    with open('product.csv','r',encoding= 'UTF-8') as f:
+       for line in f:
+            if '商品,價格' in line:
+                continue  #繼續，跳到下一次
+            name , price = line.strip().split(',')  #先用split把多餘的空格去掉，再用split切割(因為切割完變成兩塊，所以用兩個變數去存)
+            products.append([name,price])
+    print(products)
+
+else:
+    print('找不到檔案')
+
+
+
+
 
 
 # 讓使用者輸入
