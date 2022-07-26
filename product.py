@@ -14,7 +14,9 @@ print(products[0][0])  #取大清單的第一項的第一小項
 for p in products:
     print(p[0],'的價格是',p[1]) # 取小清單的第一項跟第二項
 #寫到電腦檔案
-with open('product.csv','w') as f:  #open:打開檔案的意思 csv可以存成excel檔  因為一個檔案有開就一定要關掉，所以with的功能是幫檔案自動close，跳出with的範圍就不能再寫入了
+with open('product.csv','w',encoding = 'UTF-8') as f:  #open:打開檔案的意思 csv可以存成excel檔  因為一個檔案有開就一定要關掉，所以with的功能是幫檔案自動close，跳出with的範圍就不能再寫入了
+                                                      # 要先去說明要用甚麼編碼寫入，之後excel也要調編碼(要用甚麼編碼讀取)
+    f.write('商品,價格\n')                             #在excel檔最上方新增標題欄
     for p in products:
         f.write(p[0] + ',' +  str(p[1]) + '\n')  #寫入
         
