@@ -1,5 +1,15 @@
 #%% #建立清單
+
+#讀取檔案
 products = []
+with open('product.csv','r',encoding= 'UTF-8') as f:
+    for line in f:
+        name , price = line.strip().split(',')  #先用split把多餘的空格去掉，再用split切割(因為切割完變成兩塊，所以用兩個變數去存)
+        products.append([name,price])
+print(products)
+
+
+
 while True:
     name = input('請輸入商品名稱:')
     if name == 'q': #quit
