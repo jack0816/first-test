@@ -67,3 +67,8 @@ def is_leep(x):
         return True
 print(is_leep(x))
 # %%
+def sum_of_list(x):
+    return sum(x)
+print(sum_of_list([1,2,3]))
+
+# %%
