@@ -12,7 +12,7 @@ while True:
     count = count + 1
     num = int(num)
     if num == r:
-        print('猜到了')
+        print('猜到了，密碼是：' , num)
         print('這是你猜的第',count,'次')
         break
     elif num < r:
