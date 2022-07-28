@@ -2,24 +2,19 @@
 import os  #operating system
 
 
-products = []
-def read_file(filename): #設參數filename是因為不要限制檔名就是哪一個，用傳遞的方式傳進來，不用寫死
-    if os.path.isfile(filename):  #確認檔案是否存在電腦裡
-        print('Yah,找到檔案了')
 
-        #讀取檔案
+def read_file(filename): #設參數filename是因為不要限制檔名就是哪一個，用傳遞的方式傳進來，不用寫死
+    #讀取檔案
+        products = []
         with open(filename,'r',encoding= 'UTF-8') as f:
              for line in f:
                 if '商品,價格' in line:
                     continue  #繼續，跳到下一次
                 name , price = line.strip().split(',')  #先用split把多餘的空格去掉，再用split切割(因為切割完變成兩塊，所以用兩個變數去存)
                 products.append([name,price])
-        print(products)
+        return products #因為我們把讀到的東西都裝到products，所以要return products
 
-    else:
-        print('找不到檔案')
-    return products #因為我們把讀到的東西都裝到products，所以要return products
-
+   
 # 讓使用者輸入
 def user_input(products):
     while True:
@@ -31,7 +26,7 @@ def user_input(products):
         price = int(price)
         p = [name,price] #p是小清單
         products.append(p) #把小清單裝到大清單裡面
-    print(products[0][0])  #取大清單的第一項的第一小項
+ #   print(products[0][0])  #取大清單的第一項的第一小項
     return products  #因為有append東西進去，清單有改變，所以要return
 
 #印出所有購買紀錄
@@ -47,8 +42,18 @@ def write_file(filename, products):
         f.write('商品,價格\n')                             #在excel檔最上方新增標題欄
         for p in products:
             f.write(p[0] + ',' +  str(p[1]) + '\n')  #寫入
-        
-products = read_file('product.csv')
-products = user_input(products)   #新的結果又存回products，取代掉之前的內容(尚義行的products)
-print_products(products)
-write_file('product.csv',products)
+
+def main():       
+    filename = 'product.csv'     
+    if os.path.isfile(filename):  #確認檔案是否存在電腦裡
+        print('Yah,找到檔案了')        
+        products = read_file(filename)
+    else:
+            print('找不到檔案')
+    products = user_input(products)   #新的結果又存回products，取代掉之前的內容(尚義行的products)
+    print_products(products)
+    write_file('product.csv',products)
+
+
+main()
+# %%
